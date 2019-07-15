@@ -10,7 +10,6 @@ export function mergeCode(ls: string[]) {
   let lock = false;
 
   for (const l of ls) {
-    if (l === "") continue;
     if (l.startsWith("```")) lock = !lock;
     if (lock) {
       codes.push(l);

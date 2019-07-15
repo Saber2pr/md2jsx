@@ -1,6 +1,6 @@
 {
   "name": "@saber2pr/md2jsx",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "markdown-string to react component.",
   "scripts": {
     "start": "webpack -w",
@@ -11,7 +11,7 @@
   "author": "saber2pr",
   "repository": {
     "type": "git",
-    "url": "git+"
+    "url": "git+https://github.com/Saber2pr/md2jsx.git"
   },
   "files": [
     "lib/components/*",
