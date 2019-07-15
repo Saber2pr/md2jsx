@@ -2,7 +2,7 @@
  * @Author: saber2pr
  * @Date: 2019-07-15 08:25:04
  * @Last Modified by: saber2pr
- * @Last Modified time: 2019-07-15 08:48:00
+ * @Last Modified time: 2019-07-15 10:45:10
  */
 export function mergeCode(ls: string[]) {
   const result: string[] = [];
@@ -14,6 +14,7 @@ export function mergeCode(ls: string[]) {
     if (lock) {
       codes.push(l);
     } else {
+      if (l === "") continue;
       codes.push(l);
       result.push(codes.join("\n"));
       codes.length = 0;
