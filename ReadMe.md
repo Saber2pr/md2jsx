@@ -13,18 +13,18 @@ yarn add @saber2pr/md2jsx
 # what
 
 ````tsx
-import React from "react";
-import ReactDOM from "react-dom";
+import React from "react"
+import ReactDOM from "react-dom"
 
-import Md2jsx from "@saber2pr/md2jsx";
-import theme from "@saber2pr/md2jsx/lib/theme/atom-dark";
+import Md2jsx from "@saber2pr/md2jsx"
+import theme from "@saber2pr/md2jsx/lib/theme/atom-dark"
 
 const md =
-  "header\n\n\n# react-ts\n> react + ts + less + webpack.\n```typescript\nnpm i\nexport const App = (ss:number) => {\nnpm run build\n```\nfooter\n233\nheader\n\n\n# react-ts\n> react + ts + less + webpack.\n```javascript\nnpm i\nexport const App = (ss:number) => {\nnpm run build\n```\nfooter\n233";
+  "header\n\n\n# react-ts\n> react + ts + less + webpack.\n```typescript\nnpm i\nexport const App = (ss:number) => {\nnpm run build\n```\nfooter\n233\nheader\n\n\n# react-ts\n> react + ts + less + webpack.\n```javascript\nnpm i\nexport const App = (ss:number) => {\nnpm run build\n```\nfooter\n233"
 
-export const App = () => <Md2jsx theme={theme}>{md}</Md2jsx>;
+export const App = () => <Md2jsx theme={theme}>{md}</Md2jsx>
 
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(<App />, document.getElementById("root"))
 ````
 
 # dependencies
