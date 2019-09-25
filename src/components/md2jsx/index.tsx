@@ -85,7 +85,7 @@ const renderImg = ({ jsx, i, line }: RenderLine) => {
   const meta = line.match(REG.imgtype)[0]
   const title = meta.match(REG.imgtype_title)[0].replace(/\[|\]/g, "")
   const url = meta.match(REG.imgtype_url)[0].replace(/\(|\)/g, "")
-  jsx.push(<img key={i} src={url} alt={title} />)
+  jsx.push(<img key={i} src={url} alt={title} style={{ maxWidth: "100%" }} />)
 }
 
 const renderHR = ({ jsx, i, line }: RenderLine) => {
