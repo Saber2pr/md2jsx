@@ -31,6 +31,8 @@ export const Md2jsx = ({ children, theme }: Md2jsx) => {
       renderComment({ jsx, i, line })
     } else if (REG.imgtype.test(line)) {
       renderImg({ jsx, i, line })
+    } else if (REG.atype_url.test(line)) {
+      renderAnchor({ jsx, i, line })
     } else if (line.startsWith("---") || line.startsWith("***")) {
       renderHR({ jsx, i, line })
     } else {
@@ -75,7 +77,14 @@ const renderHeader = ({ line, jsx, i }: RenderLine) => {
 
 const renderComment = ({ jsx, i, line }: RenderLine) => {
   jsx.push(
-    <p key={i} style={{ color: "gray" }}>
+    <p
+      key={i}
+      style={{
+        color: "gray",
+        borderLeft: "0.2rem solid #d0d0d0",
+        paddingLeft: "0.5rem"
+      }}
+    >
       {line.slice(2)}
     </p>
   )
@@ -86,6 +95,17 @@ const renderImg = ({ jsx, i, line }: RenderLine) => {
   const title = meta.match(REG.imgtype_title)[0].replace(/\[|\]/g, "")
   const url = meta.match(REG.imgtype_url)[0].replace(/\(|\)/g, "")
   jsx.push(<img key={i} src={url} alt={title} style={{ maxWidth: "100%" }} />)
+}
+
+const renderAnchor = ({ jsx, i, line }: RenderLine) => {
+  const meta = line.match(REG.atype_url)[0]
+  const title = meta.match(REG.imgtype_title)[0].replace(/\[|\]/g, "")
+  const url = meta.match(REG.imgtype_url)[0].replace(/\(|\)/g, "")
+  jsx.push(
+    <a href={url} title={title} key={url}>
+      {title}
+    </a>
+  )
 }
 
 const renderHR = ({ jsx, i, line }: RenderLine) => {

@@ -6,7 +6,8 @@
  */
 export namespace REG {
   export const codetype = /```[a-z]+/
-  export const imgtype = /\[.*\]\(.*\)/
+  export const imgtype = /^\!\[.*\]\(.*\)/
   export const imgtype_title = /\[.*\]/
   export const imgtype_url = /\(.*\)/
+  export const atype_url = /^\[.*\]\(.*\)/
 }
