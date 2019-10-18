@@ -102,9 +102,11 @@ const renderAnchor = ({ jsx, i, line }: RenderLine) => {
   const title = meta.match(REG.imgtype_title)[0].replace(/\[|\]/g, "")
   const url = meta.match(REG.imgtype_url)[0].replace(/\(|\)/g, "")
   jsx.push(
-    <a href={url} title={title} key={url}>
-      {title}
-    </a>
+    <div key={url + title + i}>
+      <a href={url} title={url}>
+        {title}
+      </a>
+    </div>
   )
 }
 
