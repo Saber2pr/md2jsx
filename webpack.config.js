@@ -1,17 +1,14 @@
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const CleanCSSPlugin = require("less-plugin-clean-css");
-const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin")
+const ExtractTextPlugin = require("extract-text-webpack-plugin")
+const CleanCSSPlugin = require("less-plugin-clean-css")
+const path = require("path")
 
-const extractLess = new ExtractTextPlugin("style.min.css");
+const extractLess = new ExtractTextPlugin("style.min.css")
 
-const {
-  WebpackConfig,
-  templateContent
-} = require("@saber2pr/webpack-configer");
+const { WebpackConfig, templateContent } = require("@saber2pr/webpack-configer")
 
 module.exports = WebpackConfig({
-  mode: "development",
+  mode: "production",
   entry: "./src/app.tsx",
   resolve: {
     extensions: [".js", ".jsx", ".ts", ".tsx"]
@@ -61,4 +58,4 @@ module.exports = WebpackConfig({
     }),
     extractLess
   ]
-});
+})

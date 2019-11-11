@@ -2,12 +2,12 @@
  * @Author: saber2pr
  * @Date: 2019-07-15 08:49:51
  * @Last Modified by: saber2pr
- * @Last Modified time: 2019-08-30 14:59:28
+ * @Last Modified time: 2019-11-11 21:48:47
  */
 import React, { Fragment } from "react"
 
 import SyntaxHighlighter from "react-syntax-highlighter/dist/esm/prism-light"
-import ts from "react-syntax-highlighter/dist/esm/languages/prism/typescript"
+import ts from "react-syntax-highlighter/dist/esm/languages/prism/tsx"
 
 import { REG } from "../../reg"
 import { mergeCode } from "../../core"
