@@ -7,7 +7,6 @@
 import React, { Fragment } from "react"
 
 import SyntaxHighlighter from "react-syntax-highlighter/dist/esm/prism-light"
-import ts from "react-syntax-highlighter/dist/esm/languages/prism/tsx"
 
 import { REG } from "../../reg"
 import { mergeCode } from "../../core"
@@ -17,7 +16,7 @@ export interface Md2jsx {
   theme: any
 }
 
-export const Md2jsx = ({ children, theme }: Md2jsx) => {
+export function Md2jsx({ children, theme }: Md2jsx) {
   const jsx: JSX.Element[] = []
   const lines = mergeCode(children.split("\n"))
 
@@ -49,10 +48,14 @@ type RenderLine = {
   i: number
 }
 
+export namespace Md2jsx {
+  export const registerLanguage = (name: string, meta: any) =>
+    SyntaxHighlighter.registerLanguage(name, meta)
+}
+
 const renderCode = ({ line, jsx, theme, i }: RenderLine & { theme }) => {
   const codetype = REG.codetype.exec(line)[0].slice(3)
   const code = line.slice(codetype.length + 4, line.length - 4)
-  SyntaxHighlighter.registerLanguage(codetype, ts)
   jsx.push(
     <SyntaxHighlighter key={i} language={codetype} style={theme}>
       {code}

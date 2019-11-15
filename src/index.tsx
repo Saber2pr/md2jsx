@@ -1,1 +1,1 @@
-export { Md2jsx as default } from "./components";
+export { Md2jsx as default } from "./components"

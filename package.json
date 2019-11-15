@@ -5,7 +5,8 @@
   "scripts": {
     "start": "webpack -w",
     "dev": "webpack-dev-server",
-    "config": "ts-node src/tools/config",
+    "config:theme": "ts-node src/tools/configTheme",
+    "config:lang": "ts-node src/tools/configLanguages",
     "build": "tsc"
   },
   "author": "saber2pr",
