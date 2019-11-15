@@ -17,10 +17,10 @@ import React from "react"
 import ReactDOM from "react-dom"
 
 import Md2jsx from "@saber2pr/md2jsx"
-import theme from "@saber2pr/md2jsx/theme/atom-dark"
+import theme from "@saber2pr/md2jsx/lib/theme/atom-dark"
 
-import tsx from "@saber2pr/md2jsx/languages/tsx"
-import hs from "@saber2pr/md2jsx/languages/haskell"
+import tsx from "@saber2pr/md2jsx/lib/languages/tsx"
+import hs from "@saber2pr/md2jsx/lib/languages/haskell"
 
 Md2jsx.registerLanguage("tsx", tsx)
 Md2jsx.registerLanguage("hs", hs)
