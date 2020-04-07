@@ -2,7 +2,7 @@
  * @Author: saber2pr
  * @Date: 2019-07-15 08:49:51
  * @Last Modified by: saber2pr
- * @Last Modified time: 2019-11-11 21:48:47
+ * @Last Modified time: 2020-04-07 14:10:59
  */
 import React, { Fragment } from "react"
 
@@ -35,7 +35,12 @@ export function Md2jsx({ children, theme }: Md2jsx) {
     } else if (line.startsWith("---") || line.startsWith("***")) {
       renderHR({ jsx, i, line })
     } else {
-      jsx.push(<p key={i}>{line}</p>)
+      jsx.push(
+        <p
+          key={i}
+          dangerouslySetInnerHTML={{ __html: line.replace(/ /g, "&nbsp;") }}
+        />
+      )
     }
   }
 
