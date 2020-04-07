@@ -38,7 +38,9 @@ export function Md2jsx({ children, theme }: Md2jsx) {
       jsx.push(
         <p
           key={i}
-          dangerouslySetInnerHTML={{ __html: line.replace(/ /g, "&nbsp;") }}
+          dangerouslySetInnerHTML={{
+            __html: line.replace(/\t/g, "&nbsp;&nbsp;")
+          }}
         />
       )
     }

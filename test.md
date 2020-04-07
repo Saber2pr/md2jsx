@@ -45,12 +45,11 @@ lala
 
 ### SECTION
 
-ALD  testsets ffdsf
-      EQ1
-      EQ2
-      EQ3
+ALD testsets ffdsf
+		EQ1
+		EQ2
+		EQ3
 
 DFSA aasda
-     asas
-     aaaa
-     
+		asas
+		aaaa
