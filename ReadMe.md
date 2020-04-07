@@ -2,15 +2,13 @@
 
 > markdown-string to react component.
 
-> supported language: typescript, javascript
-
 ```bash
 npm i @saber2pr/md2jsx
 
 yarn add @saber2pr/md2jsx
 ```
 
-# what
+# Example
 
 ````tsx
 import React from "react"
