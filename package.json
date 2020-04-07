@@ -1,6 +1,6 @@
 {
   "name": "@saber2pr/md2jsx",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "markdown-string to react component.",
   "scripts": {
     "start": "webpack -w",
