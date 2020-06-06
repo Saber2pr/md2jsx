@@ -7,7 +7,7 @@
     "dev": "webpack-dev-server",
     "config:theme": "ts-node src/tools/configTheme",
     "config:lang": "ts-node src/tools/configLanguages",
-    "build": "tsc"
+    "build": "tsc && move src lib .ts .tsx"
   },
   "author": "saber2pr",
   "repository": {
@@ -25,13 +25,16 @@
   ],
   "dependencies": {
     "@types/react-syntax-highlighter": "^10.2.1",
+    "clipboard": "^2.0.6",
     "react-syntax-highlighter": "^11.0.2"
   },
   "peerDependencies": {
     "react": ">= 0.14.0"
   },
   "devDependencies": {
+    "@saber2pr/move": "^0.0.1",
     "@saber2pr/webpack-configer": "0.0.9",
+    "@types/clipboard": "^2.0.1",
     "@types/react": "^16.8.19",
     "@types/react-dom": "^16.8.4",
     "css-loader": "^2.1.1",

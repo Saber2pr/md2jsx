@@ -5,7 +5,7 @@ header
 > react + ts + less + webpack.
 
 ```typescript
-npm i
+npm iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii
 
 export const App = (ss:number) => {
 

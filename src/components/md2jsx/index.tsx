@@ -4,12 +4,14 @@
  * @Last Modified by: saber2pr
  * @Last Modified time: 2020-04-07 14:10:59
  */
-import React, { Fragment } from "react"
+import React, { Fragment, useEffect, useRef } from "react"
+import ClipboardJS from "clipboard"
 
 import SyntaxHighlighter from "react-syntax-highlighter/dist/esm/prism-light"
 
 import { REG } from "../../reg"
 import { mergeCode } from "../../core"
+import "./style.less"
 
 export interface Md2jsx {
   children: string
@@ -63,11 +65,29 @@ export namespace Md2jsx {
 const renderCode = ({ line, jsx, theme, i }: RenderLine & { theme }) => {
   const codetype = REG.codetype.exec(line)[0].slice(3)
   const code = line.slice(codetype.length + 4, line.length - 4)
-  jsx.push(
-    <SyntaxHighlighter key={i} language={codetype} style={theme}>
-      {code}
-    </SyntaxHighlighter>
-  )
+
+  const Code = () => {
+    const ref = useRef<HTMLDivElement>()
+    useEffect(() => {
+      const cp = new ClipboardJS(ref.current)
+      return () => cp.destroy()
+    }, [])
+    const id = "MD2JSX-Code-" + i
+    return (
+      <div className="MD2JSX-Code">
+        <div className="Paste" ref={ref} data-clipboard-target={"#" + id}>
+          <i className="iconfont icon-fuzhi" />
+        </div>
+        <div id={id}>
+          <SyntaxHighlighter language={codetype} style={theme}>
+            {code}
+          </SyntaxHighlighter>
+        </div>
+      </div>
+    )
+  }
+
+  jsx.push(<Code key={i} />)
 }
 
 const renderHeader = ({ line, jsx, i }: RenderLine) => {
