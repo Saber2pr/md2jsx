@@ -75,7 +75,12 @@ const renderCode = ({ line, jsx, theme, i }: RenderLine & { theme }) => {
     const id = "MD2JSX-Code-" + i
     return (
       <div className="MD2JSX-Code">
-        <div className="Paste" ref={ref} data-clipboard-target={"#" + id}>
+        <div
+          title="复制到剪贴板"
+          className="Paste"
+          ref={ref}
+          data-clipboard-target={"#" + id}
+        >
           <i className="iconfont icon-fuzhi" />
         </div>
         <div id={id}>
