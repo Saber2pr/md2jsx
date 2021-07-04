@@ -1,1 +1,1 @@
-export { default } from "react-syntax-highlighter/dist/esm/languages/prism/sql";
+export { default } from "react-syntax-highlighter/dist/cjs/languages/prism/sql";

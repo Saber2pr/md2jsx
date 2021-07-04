@@ -1,1 +1,1 @@
-export { default } from "react-syntax-highlighter/dist/esm/styles/prism/twilight";
+export { default } from "react-syntax-highlighter/dist/cjs/styles/prism/twilight";

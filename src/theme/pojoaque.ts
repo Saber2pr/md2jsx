@@ -1,1 +1,1 @@
-export { default } from "react-syntax-highlighter/dist/esm/styles/prism/pojoaque";
+export { default } from "react-syntax-highlighter/dist/cjs/styles/prism/pojoaque";

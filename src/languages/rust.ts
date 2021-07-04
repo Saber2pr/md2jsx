@@ -1,1 +1,1 @@
-export { default } from "react-syntax-highlighter/dist/esm/languages/prism/rust";
+export { default } from "react-syntax-highlighter/dist/cjs/languages/prism/rust";

@@ -1,1 +1,1 @@
-export { default } from "react-syntax-highlighter/dist/esm/languages/prism/autoit";
+export { default } from "react-syntax-highlighter/dist/cjs/languages/prism/autoit";

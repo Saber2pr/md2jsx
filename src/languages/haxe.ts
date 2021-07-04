@@ -1,1 +1,1 @@
-export { default } from "react-syntax-highlighter/dist/esm/languages/prism/haxe";
+export { default } from "react-syntax-highlighter/dist/cjs/languages/prism/haxe";

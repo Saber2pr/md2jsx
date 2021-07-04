@@ -1,1 +1,1 @@
-export { default } from "react-syntax-highlighter/dist/esm/styles/prism/duotone-earth";
+export { default } from "react-syntax-highlighter/dist/cjs/styles/prism/duotone-earth";

@@ -1,1 +1,1 @@
-export { default } from "react-syntax-highlighter/dist/esm/styles/prism/base16-ateliersulphurpool.light";
+export { default } from "react-syntax-highlighter/dist/cjs/styles/prism/base16-ateliersulphurpool.light";

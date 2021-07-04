@@ -1,1 +1,1 @@
-export { default } from "react-syntax-highlighter/dist/esm/languages/prism/core";
+export { default } from "react-syntax-highlighter/dist/cjs/languages/prism/core";

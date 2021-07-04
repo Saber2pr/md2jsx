@@ -1,1 +1,1 @@
-export { default } from "react-syntax-highlighter/dist/esm/styles/prism/dark";
+export { default } from "react-syntax-highlighter/dist/cjs/styles/prism/dark";

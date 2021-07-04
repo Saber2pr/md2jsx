@@ -1,1 +1,1 @@
-export { default } from "react-syntax-highlighter/dist/esm/languages/prism/haml";
+export { default } from "react-syntax-highlighter/dist/cjs/languages/prism/haml";

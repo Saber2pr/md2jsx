@@ -7,7 +7,7 @@
 import React, { Fragment, useEffect, useRef } from 'react'
 import ClipboardJS from 'clipboard'
 
-import SyntaxHighlighter from 'react-syntax-highlighter/dist/esm/prism-light'
+import SyntaxHighlighter from 'react-syntax-highlighter/dist/cjs/prism-light'
 
 import { REG } from '../../reg'
 import { mergeCode } from '../../core'

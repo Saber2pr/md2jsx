@@ -1,1 +1,1 @@
-export { default } from "react-syntax-highlighter/dist/esm/styles/prism/ghcolors";
+export { default } from "react-syntax-highlighter/dist/cjs/styles/prism/ghcolors";

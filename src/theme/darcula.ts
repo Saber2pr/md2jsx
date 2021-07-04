@@ -1,1 +1,1 @@
-export { default } from "react-syntax-highlighter/dist/esm/styles/prism/darcula";
+export { default } from "react-syntax-highlighter/dist/cjs/styles/prism/darcula";
