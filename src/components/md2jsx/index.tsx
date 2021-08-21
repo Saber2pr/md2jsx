@@ -7,7 +7,9 @@
 import React, { Fragment, useEffect, useRef } from 'react'
 import ClipboardJS from 'clipboard'
 
-import SyntaxHighlighter from 'react-syntax-highlighter/dist/cjs/prism-light'
+import SyntaxHighlighterCore from 'react-syntax-highlighter/dist/cjs/prism-light'
+import createElement from 'react-syntax-highlighter/dist/cjs/create-element'
+const SyntaxHighlighter = SyntaxHighlighterCore as typeof import('react-syntax-highlighter').PrismLight
 
 import { REG } from '../../reg'
 import { mergeCode } from '../../core'
@@ -62,7 +64,27 @@ export namespace Md2jsx {
     SyntaxHighlighter.registerLanguage(name, meta)
 }
 
-const renderCode = ({ line, jsx, theme, i }: RenderLine & { theme }) => {
+const rowRenderer = (blockIndex: number, lang: string) => ({ rows, stylesheet, useInlineStyles }) => {
+  return rows.map((node, i) => {
+    const tokens = Array.isArray(node.children) ? node.children : []
+    console.log(tokens)
+    node.children = tokens.map(token => {
+      const properties = token.properties ?? {}
+      properties[`data-${blockIndex}-${lang}-token`] = `${'text'}-${i}-${}`,
+        token.properties = properties
+      return token
+    })
+    return createElement({
+      node,
+      stylesheet,
+      useInlineStyles,
+      key: `code-segement${i}`
+    })
+  }
+  );
+}
+
+const renderCode = ({ line, jsx, theme, i, blockIndex }: RenderLine & { theme; blockIndex: number }) => {
   const codetype = REG.codetype.exec(line)[0].slice(3)
   const code = line.slice(codetype.length + 4, line.length - 4)
 
@@ -84,7 +106,7 @@ const renderCode = ({ line, jsx, theme, i }: RenderLine & { theme }) => {
           <i className="iconfont icon-fuzhi" />
         </div>
         <div id={id}>
-          <SyntaxHighlighter language={codetype} style={theme}>
+          <SyntaxHighlighter language={codetype} style={theme} renderer={rowRenderer(blockIndex, codetype)} >
             {code}
           </SyntaxHighlighter>
         </div>
