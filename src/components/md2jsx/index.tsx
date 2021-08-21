@@ -24,10 +24,13 @@ export function Md2jsx({ children, theme }: Md2jsx) {
   const jsx: JSX.Element[] = []
   const lines = mergeCode(children.split(/\n|\r\n/))
 
+  let codeIdx = 0
+
   for (let i = 0; i < lines.length; ++i) {
     const line = lines[i]
     if (line.startsWith('```')) {
-      renderCode({ jsx, i, line, theme })
+      renderCode({ jsx, i, line, theme, blockIndex: codeIdx })
+      codeIdx++
     } else if (line.startsWith('#')) {
       renderHeader({ jsx, i, line })
     } else if (line.startsWith('>')) {
@@ -50,6 +53,8 @@ export function Md2jsx({ children, theme }: Md2jsx) {
     }
   }
 
+  codeIdx = 0
+
   return <>{jsx}</>
 }
 
@@ -64,14 +69,29 @@ export namespace Md2jsx {
     SyntaxHighlighter.registerLanguage(name, meta)
 }
 
+const getText = token => {
+  const children = token?.children
+  if (Array.isArray(children)) {
+    return children.map(node => {
+      if (node.type === 'text') {
+        return node.value
+      }
+      return ''
+    }).join('')
+  }
+  return ''
+}
+
 const rowRenderer = (blockIndex: number, lang: string) => ({ rows, stylesheet, useInlineStyles }) => {
   return rows.map((node, i) => {
     const tokens = Array.isArray(node.children) ? node.children : []
-    console.log(tokens)
+    let currentIndex = 0
     node.children = tokens.map(token => {
       const properties = token.properties ?? {}
-      properties[`data-${blockIndex}-${lang}-token`] = `${'text'}-${i}-${}`,
-        token.properties = properties
+      const text = getText(token)
+      properties[`data-${blockIndex}-${lang}-token`] = `${text}-${i}-${currentIndex}`
+      token.properties = properties
+      currentIndex += text.length
       return token
     })
     return createElement({

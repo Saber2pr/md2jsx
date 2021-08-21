@@ -4,12 +4,15 @@ header
 
 > react + ts + less + webpack.
 
-```typescript
-npm iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii
-
+```tsx
 export const App = (ss:number) => {
-
-npm run build
+  return (
+    <div>
+      aa
+      <span>aa</span>
+    </div>
+  )
+}
 ```
 
 footer
@@ -21,9 +24,10 @@ header
 > react + ts + less + webpack.
 
 ```tsx
-npm i
-export const App = (ss:number) => <input onClick={() => {}} />
-npm run build
+export const App = (ss:number) => 
+  <input 
+    onClick={() => {}}
+  />
 ```
 
 haskell
@@ -46,10 +50,10 @@ lala
 ### SECTION
 
 ALD testsets ffdsf
-		EQ1
-		EQ2
-		EQ3
+    EQ1
+    EQ2
+    EQ3
 
 DFSA aasda
-		asas
-		aaaa
+    asas
+    aaaa
