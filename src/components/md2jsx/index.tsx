@@ -82,6 +82,14 @@ const getText = token => {
   return ''
 }
 
+const getStartPos = (token: string) => {
+  const pref = token.match(/^( +)/);
+  if (pref) {
+    return pref[1].length;
+  }
+  return 0;
+};
+
 const rowRenderer = (blockIndex: number, lang: string) => ({ rows, stylesheet, useInlineStyles }) => {
   return rows.map((node, i) => {
     const tokens = Array.isArray(node.children) ? node.children : []
@@ -89,7 +97,13 @@ const rowRenderer = (blockIndex: number, lang: string) => ({ rows, stylesheet, u
     node.children = tokens.map(token => {
       const properties = token.properties ?? {}
       const text = getText(token)
-      properties[`data-${blockIndex}-${lang}-token`] = `${text}-${i}-${currentIndex}`
+      if (/ /.test(text)) {
+      } else {
+        const tokenWord = text.trim()
+        if (tokenWord && tokenWord !== '.') {
+          properties[`data-${blockIndex}-${lang}-token`] = `${tokenWord}-${i}-${currentIndex + getStartPos(text)}`
+        }
+      }
       token.properties = properties
       currentIndex += text.length
       return token
@@ -109,18 +123,17 @@ const renderCode = ({ line, jsx, theme, i, blockIndex }: RenderLine & { theme; b
   const code = line.slice(codetype.length + 4, line.length - 4)
 
   const Code = () => {
-    const ref = useRef<HTMLDivElement>()
-    useEffect(() => {
-      const cp = new ClipboardJS(ref.current)
-      return () => cp.destroy()
-    }, [])
     const id = 'MD2JSX-Code-' + i
     return (
       <div className="MD2JSX-Code">
         <div
           title="复制到剪贴板"
           className="Paste"
-          ref={ref}
+          ref={el => {
+            if (el) {
+              new ClipboardJS(el)
+            }
+          }}
           data-clipboard-target={'#' + id}
         >
           <i className="iconfont icon-fuzhi" />
