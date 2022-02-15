@@ -2,7 +2,7 @@
  * @Author: saber2pr
  * @Date: 2019-07-15 08:49:51
  * @Last Modified by: saber2pr
- * @Last Modified time: 2020-04-07 14:10:59
+ * @Last Modified time: 2022-02-15 22:02:31
  */
 import React, { Fragment, useEffect, useRef } from 'react'
 import ClipboardJS from 'clipboard'
@@ -119,7 +119,8 @@ const rowRenderer = (blockIndex: number, lang: string) => ({ rows, stylesheet, u
 }
 
 const renderCode = ({ line, jsx, theme, i, blockIndex }: RenderLine & { theme; blockIndex: number }) => {
-  const codetype = REG.codetype.exec(line)[0].slice(3)
+  const match = REG.codetype.exec(line)?.[0] || ''
+  const codetype = match.slice(3)
   const code = line.slice(codetype.length + 4, line.length - 4)
 
   const Code = () => {

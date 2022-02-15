@@ -4,7 +4,7 @@ header
 
 > react + ts + less + webpack.
 
-```tsx
+```
 export const App = (ss:number) => {
   return (
     <div>
