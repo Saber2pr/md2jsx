@@ -1,13 +1,14 @@
 {
   "name": "@saber2pr/md2jsx",
-  "version": "0.1.9",
+  "version": "0.2.0",
   "description": "markdown-string to react component.",
   "scripts": {
     "start": "webpack -w",
     "dev": "webpack-dev-server",
     "config:theme": "ts-node src/tools/configTheme",
     "config:lang": "ts-node src/tools/configLanguages",
-    "build": "tsc && yarn move src lib .ts .tsx"
+    "build": "tsc && yarn move src lib .ts .tsx",
+    "prepublishOnly": "rm -rf ./lib && yarn build"
   },
   "author": "saber2pr",
   "repository": {
