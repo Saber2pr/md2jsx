@@ -18,9 +18,10 @@ import './style.less'
 export interface Md2jsx {
   children: string
   theme: any
+  basename?: string
 }
 
-export function Md2jsx({ children, theme }: Md2jsx) {
+export function Md2jsx({ children, theme, basename = '' }: Md2jsx) {
   const jsx: JSX.Element[] = []
   const lines = mergeCode(children.split(/\n|\r\n/))
 
@@ -38,7 +39,7 @@ export function Md2jsx({ children, theme }: Md2jsx) {
     } else if (REG.imgtype.test(line)) {
       renderImg({ jsx, i, line })
     } else if (REG.atype_url.test(line)) {
-      renderAnchor({ jsx, i, line })
+      renderAnchor({ jsx, i, line, basename })
     } else if (line.startsWith('---') || line.startsWith('***')) {
       renderHR({ jsx, i, line })
     } else {
@@ -188,13 +189,15 @@ const renderImg = ({ jsx, i, line }: RenderLine) => {
   jsx.push(<img key={i} src={url} alt={title} style={{ maxWidth: '100%' }} />)
 }
 
-const renderAnchor = ({ jsx, i, line }: RenderLine) => {
+const renderAnchor = ({ jsx, i, line, basename = '' }: RenderLine & {
+  basename?: string
+}) => {
   const meta = line.match(REG.atype_url)[0]
   const title = meta.match(REG.imgtype_title)[0].replace(/\[|\]/g, '')
   const url = meta.match(REG.imgtype_url)[0].replace(/\(|\)/g, '')
   jsx.push(
     <div key={url + title + i}>
-      <a href={url} title={url}>
+      <a href={basename + url} title={url}>
         {title}
       </a>
     </div>
